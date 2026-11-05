@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA RAJ - Official Free Fire Store</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: #050505; 
+            margin: 0; 
+            padding: 10px; 
+            color: #ffffff; 
+        }
+        .container { max-width: 600px; margin: 0 auto; background: #0e0e11; padding: 15px; border-radius: 12px; box-shadow: 0 0 25px rgba(255,51,0,0.2); border: 1px solid #222; }
+        
+        /* Top Corner Brand (TA RAJ) - Sleek & Stylish */
+        .top-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; padding-bottom: 8px; margin-bottom: 12px; }
+        .brand-logo { 
+            font-size: 14px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            color: #38bdf8; 
+        }
+        .brand-logo span { color: #fbbf24; }
+        .brand-contact { font-size: 10px; background: #18181b; padding: 4px 10px; border-radius: 12px; border: 1px solid #333; color: #fbbf24; font-weight: bold; }
+
+        /* 🔥 Main Store Title (TA FF ID SELLER) - Dangerous Gaming Font Style */
+        .store-main-title { 
+            color: #ff3300; 
+            font-size: 24px; 
+            text-align: center; 
+            margin: 10px 0 2px 0; 
+            font-family: 'Impact', Arial Black, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(255,51,0,0.7), 0 0 20px rgba(255,51,0,0.4), 0 0 30px rgba(255,51,0,0.2);
+        }
+        .subtitle { text-align: center; font-size: 11px; color: #71717a; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* ⚡ 100% Working Tabs */
+        .tabs { display: flex; gap: 5px; margin-bottom: 15px; border-bottom: 2px solid #18181b; padding-bottom: 8px; }
+        .tab-btn { flex: 1; padding: 10px 4px; background: #121216; color: #a1a1aa; border: 1px solid #27272a; border-radius: 6px; font-weight: bold; font-size: 11px; cursor: pointer; text-align: center; }
+        .tab-btn.active { background: #ff3300; color: white; border-color: #ff3300; box-shadow: 0 0 12px rgba(255,51,0,0.6); }
+
+        .section { display: none; }
+        .section.active { display: block; }
+
+        .form-group { margin-bottom: 10px; }
+        label { display: block; font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #d4d4d8; }
+        input { width: 100%; padding: 10px; background: #18181b; color: white; border: 1px solid #27272a; border-radius: 6px; font-size: 13px; box-sizing: border-box; }
+        input:focus { border-color: #ff3300; outline: none; }
+        
+        .btn { background: linear-gradient(135deg, #ff3300 0%, #b91c1c 100%); color: white; border: none; padding: 10px; width: 100%; border-radius: 6px; font-weight: bold; font-size: 13px; cursor: pointer; margin-top: 5px; box-shadow: 0 4px 12px rgba(255,51,0,0.3); }
+        .btn-success { background: linear-gradient(135deg, #059669 0%, #047857 100%); box-shadow: 0 4px 12px rgba(5,150,105,0.3); }
+        .btn-whatsapp { background: #25D366; color: white; }
+        .btn-warning { background: #d97706; color: white; }
+
+        .product-card { background: #121216; border: 1px solid #27272a; border-radius: 8px; overflow: hidden; margin-bottom: 15px; }
+        .product-img { width: 100%; height: 170px; object-fit: cover; background: #000; }
+        .product-body { padding: 12px; }
+        .product-title { font-size: 15px; font-weight: bold; color: #fbbf24; }
+        .product-info { font-size: 11px; color: #a1a1aa; margin: 6px 0; line-height: 1.4; }
+        .price-tag { font-size: 17px; font-weight: bold; color: #34d399; margin: 6px 0; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 1000; padding: 10px; box-sizing: border-box; }
+        .modal-content { background: #0e0e11; color: white; padding: 20px; border-radius: 10px; width: 100%; max-width: 400px; text-align: center; max-height: 90vh; overflow-y: auto; border: 1px solid #27272a; }
+        .qr-preview { width: 140px; height: 140px; object-fit: contain; background: white; border-radius: 6px; margin: 5px auto; display: block; }
+        
+        .notice-box { background: rgba(217, 119, 6, 0.1); border: 1px solid #d97706; padding: 12px; border-radius: 6px; text-align: left; font-size: 11px; line-height: 1.5; margin-top: 10px; color: #fbbf24; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Top Corner Branding -->
+    <div class="top-header">
+        <div class="brand-logo" id="ui-brand">🔥 TA <span>RAJ</span></div>
+        <div id="header-contact" class="brand-contact">📞 Support</div>
+    </div>
+
+    <!-- 🔥 Unique Dangerous Gaming Main Header -->
+    <div class="store-main-title">TA FF ID SELLER</div>
+    <div class="subtitle">Trusted Free Fire ID Marketplace</div>
+
+    <div class="tabs">
+        <button class="tab-btn active" id="btn-store" onclick="switchTab('store')">🛒 Store</button>
+        <button class="tab-btn" id="btn-add" onclick="checkAdmin('add-stock')">📦 Add ID</button>
+        <button class="tab-btn" id="btn-pay" onclick="checkAdmin('pay-settings')">⚙️ Settings</button>
+        <button class="tab-btn" id="btn-orders" onclick="checkAdmin('orders-list')">📋 Orders</button>
+    </div>
+
+    <!-- TAB 1: STORE -->
+    <div id="store-section" class="section active">
+        <h3 style="font-size: 13px; margin-bottom: 10px; color: #fbbf24;">Available Gaming Accounts</h3>
+        <div id="store-products-list"></div>
+    </div>
+
+    <!-- TAB 2: ADD STOCK -->
+    <div id="add-stock-section" class="section">
+        <h3 style="font-size: 13px; margin-bottom: 10px; color: #fbbf24;">Add New ID with Screenshot</h3>
+        <div class="form-group"><label>Account Title</label><input type="text" id="item-name" placeholder="e.g. Max Level ID"></div>
+        <div class="form-group"><label>UID</label><input type="text" id="item-uid" placeholder="e.g. 1355881968"></div>
+        <div class="form-group"><label>Screenshot Image Link</label><input type="text" id="item-img" placeholder="Paste image link here"></div>
+        <div class="form-group"><label>Bind Email & Password</label><input type="text" id="item-email" placeholder="Email & Password"></div>
+        <div class="form-group"><label>ID Level</label><input type="text" id="item-lvl" placeholder="e.g. 79"></div>
+        <div class="form-group"><label>Selling Price (₹)</label><input type="number" id="item-price" placeholder="Price in Rs"></div>
+        <button class="btn" onclick="addNewProduct()">Publish to Store</button>
+    </div>
+
+    <!-- TAB 3: SETTINGS -->
+    <div id="pay-settings-section" class="section">
+        <h3 style="font-size: 13px; margin-bottom: 10px; color: #fbbf24;">Store & Payment Settings</h3>
+        <div class="form-group"><label>Top Brand Name (e.g. 🔥 TA &lt;span&gt;RAJ&lt;/span&gt;)</label><input type="text" id="set-brand" placeholder="🔥 TA <span>RAJ</span>"></div>
+        <div class="form-group"><label>Contact Number (Top Corner)</label><input type="text" id="set-phone-display" placeholder="9883222901"></div>
+        <div class="form-group"><label>UPI ID</label><input type="text" id="set-upi" placeholder="yourname@ybl"></div>
+        <div class="form-group"><label>WhatsApp Number (With 91)</label><input type="text" id="set-wa" placeholder="919883222901"></div>
+        <div class="form-group"><label>QR Code Image Link</label><input type="text" id="set-qr" placeholder="QR link"></div>
+        <button class="btn" onclick="savePaymentSettings()">Save Settings</button>
+        <div style="margin-top: 15px; text-align: center;">
+            <p style="font-size: 11px; color: #71717a;">QR Preview:</p>
+            <img id="current-qr-preview" class="qr-preview" src="" alt="QR">
+        </div>
+    </div>
+
+    <!-- TAB 4: ORDERS -->
+    <div id="orders-list-section" class="section">
+        <h3 style="font-size: 13px; margin-bottom: 10px; color: #fbbf24;">Verify UTR & Approve Orders</h3>
+        <div id="orders-container"></div>
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="pay-modal" class="modal">
+    <div class="modal-content">
+        <h3 style="color: #ff3300; margin-bottom: 5px;">Secure Checkout</h3>
+        <p style="font-size: 11px; color: #a1a1aa;">Scan QR and submit UTR for approval!</p>
+        <div style="font-size: 14px; font-weight: bold; margin: 6px 0;" id="pay-item-name"></div>
+        <div style="font-size: 16px; font-weight: bold; color: #34d399; margin-bottom: 8px;" id="pay-item-price"></div>
+        
+        <div style="background: rgba(255,255,255,0.03); border: 1px dashed #ff3300; padding: 10px; border-radius: 6px; font-size: 11px; margin-bottom: 10px;">
+            <img id="modal-qr-img" class="qr-preview" src="" alt="QR"><br>
+            <b>UPI ID:</b> <span id="modal-upi-id" style="color: #fbbf24; font-weight: bold;"></span>
+        </div>
+
+        <div class="form-group" style="text-align: left;"><label>Your Name & WhatsApp</label><input type="text" id="buyer-details" placeholder="Name & Phone"></div>
+        <div class="form-group" style="text-align: left;"><label>Payment UTR / Transaction ID</label><input type="text" id="pay-utr" placeholder="12-digit UTR"></div>
+
+        <button class="btn btn-success" onclick="submitOrderForApproval()">Submit UTR</button>
+        <button class="btn" style="background: #27272a; margin-top: 5px;" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="success-modal" class="modal">
+    <div class="modal-content">
+        <h2 style="color: #fbbf24; margin-bottom: 2px; font-size: 18px;">⏳ Pending Verification</h2>
+        <div class="notice-box">
+            Your UTR has been submitted! Admin will verify and send account details to your WhatsApp.
+        </div>
+        <a id="whatsapp-send-btn" href="#" target="_blank" class="btn btn-whatsapp" style="margin-top: 15px; text-decoration: none; display: block; text-align: center;">💬 Send UTR to WhatsApp</a>
+        <button class="btn" onclick="location.reload()" style="margin-top: 5px;">Done</button>
+    </div>
+</div>
+
+<script>
+    let products = JSON.parse(localStorage.getItem('ta_store_v15')) || [];
+    let payConfig = JSON.parse(localStorage.getItem('ta_pay_config_v15')) || {
+        brand: "🔥 TA <span>RAJ</span>",
+        phone: "9883222901",
+        upi: "taffseller@ybl",
+        whatsapp: "919883222901",
+        qr: "https://via.placeholder.com/150?text=Upload+Your+QR"
+    };
+    let orders = JSON.parse(localStorage.getItem('ta_orders_v15')) || [];
+    let activeId = null;
+    const ADMIN_PIN = "3636786";
+
+    function applyBranding() {
+        document.getElementById('ui-brand').innerHTML = payConfig.brand;
+        document.getElementById('header-contact').innerText = "📞 " + payConfig.phone;
+    }
+    applyBranding();
+
+    function checkAdmin(targetSection) {
+        let pin = prompt("🔒 Enter Admin PIN:");
+        if (pin === ADMIN_PIN) {
+            switchTab(targetSection);
+        } else if (pin !== null) {
+            alert("❌ Incorrect PIN!");
+        }
+    }
+
+    function switchTab(tab) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        if(tab === 'store') {
+            document.getElementById('store-section').classList.add('active');
+            document.getElementById('btn-store').classList.add('active');
+            renderStore();
+        } else if(tab === 'add-stock') {
+            document.getElementById('add-stock-section').classList.add('active');
+            document.getElementById('btn-add').classList.add('active');
+        } else if(tab === 'pay-settings') {
+            document.getElementById('pay-settings-section').classList.add('active');
+            document.getElementById('btn-pay').classList.add('active');
+            loadPaymentSettingsUI();
+        } else if(tab === 'orders-list') {
+            document.getElementById('orders-list-section').classList.add('active');
+            document.getElementById('btn-orders').classList.add('active');
+            renderOrders();
+        }
+    }
+
+    function loadPaymentSettingsUI() {
+        document.getElementById('set-brand').value = payConfig.brand;
+        document.getElementById('set-phone-display').value = payConfig.phone;
+        document.getElementById('set-upi').value = payConfig.upi;
+        document.getElementById('set-wa').value = payConfig.whatsapp;
+        document.getElementById('set-qr').value = payConfig.qr;
+        document.getElementById('current-qr-preview').src = payConfig.qr;
+    }
+
+    function savePaymentSettings() {
+        let brand = document.getElementById('set-brand').value.trim();
+        let phone = document.getElementById('set-phone-display').value.trim();
+        let upi = document.getElementById('set-upi').value.trim();
+        let whatsapp = document.getElementById('set-wa').value.trim();
+        let qr = document.getElementById('set-qr').value.trim();
+        
+        if(!brand || !upi || !qr || !whatsapp || !phone) {
+            alert('Please fill all fields!');
+            return;
+        }
+        payConfig = { brand, phone, upi, whatsapp, qr };
+        localStorage.setItem('ta_pay_config_v15', JSON.stringify(payConfig));
+        applyBranding();
+        alert('Settings saved successfully!');
+        loadPaymentSettingsUI();
+    }
+
+    function addNewProduct() {
+        let name = document.getElementById('item-name').value.trim();
+        let uid = document.getElementById('item-uid').value.trim();
+        let price = parseFloat(document.getElementById('item-price').value);
+        if(!name || !uid || isNaN(price)) {
+            alert('Please fill Title, UID and Price!');
+            return;
+        }
+
+        products.push({
+            id: Date.now(),
+            name, uid,
+            img: document.getElementById('item-img').value.trim() || 'https://via.placeholder.com/400x180?text=FF+Account',
+            email: document.getElementById('item-email').value.trim() || 'Not Provided',
+            lvl: document.getElementById('item-lvl').value.trim() || 'N/A',
+            price, status: 'Available'
+        });
+
+        localStorage.setItem('ta_store_v15', JSON.stringify(products));
+        alert('Published successfully!');
+        document.getElementById('item-name').value = '';
+        document.getElementById('item-uid').value = '';
+        document.getElementById('item-img').value = '';
+        document.getElementById('item-email').value = '';
+        document.getElementById('item-lvl').value = '';
+        document.getElementById('item-price').value = '';
+        switchTab('store');
+    }
+
+    function renderStore() {
+        let list = document.getElementById('store-products-list');
+        let available = products.filter(p => p.status === 'Available');
+        list.innerHTML = available.length === 0 ? '<p style="text-align:center; color:#71717a; padding:20px; font-size:12px;">No accounts available right now.</p>' : '';
+        
+        available.forEach(p => {
+            list.innerHTML += `
+                <div class="product-card">
+                    <img src="${p.img}" class="product-img" alt="Account">
+                    <div class="product-body">
+                        <div class="product-title">${p.name}</div>
+                        <div class="product-info"><b>UID:</b> ${p.uid} | <b>Level:</b> ${p.lvl}</div>
+                        <div class="price-tag">₹${p.price.toLocaleString()}</div>
+                        <button class="btn btn-success" onclick="openPayModal(${p.id})">⚡ Buy Now</button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function openPayModal(id) {
+        activeId = id;
+        let p = products.find(x => x.id === id);
+        document.getElementById('pay-item-name').innerText = p.name;
+        document.getElementById('pay-item-price').innerText = `₹${p.price.toLocaleString()}`;
+        document.getElementById('modal-upi-id').innerText = payConfig.upi;
+        document.getElementById('modal-qr-img').src = payConfig.qr;
+        document.getElementById('pay-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('pay-modal').style.display = 'none';
+    }
+
+    function submitOrderForApproval() {
+        let buyer = document.getElementById('buyer-details').value.trim();
+        let utr = document.getElementById('pay-utr').value.trim();
+        if(!buyer || !utr) {
+            alert('Please enter Name and UTR!');
+            return;
+        }
+
+        let p = products.find(x => x.id === activeId);
+        p.status = 'Pending Verification';
+        localStorage.setItem('ta_store_v15', JSON.stringify(products));
+
+        let orderData = {
+            id: Date.now(),
+            productId: p.id,
+            date: new Date().toLocaleString(),
+            buyer, utr, title: p.name, uid: p.uid, price: p.price, email: p.email,
+            status: 'Pending'
+        };
+        orders.push(orderData);
+        localStorage.setItem('ta_orders_v15', JSON.stringify(orders));
+
+        closeModal();
+
+        let waMessage = `Hello Admin, I have paid ₹${p.price} for ${p.name} (UID: ${p.uid}). UTR: ${utr}. Buyer: ${buyer}`;
+        let waUrl = `https://wa.me/${payConfig.whatsapp}?text=${encodeURIComponent(waMessage)}`;
+        document.getElementById('whatsapp-send-btn').href = waUrl;
+
+        document.getElementById('success-modal').style.display = 'flex';
+    }
+
+    function renderOrders() {
+        let container = document.getElementById('orders-container');
+        container.innerHTML = orders.length === 0 ? '<p style="text-align:center; color:#71717a; font-size:12px;">No orders yet.</p>' : '';
+        
+        orders.slice().reverse().forEach(o => {
+            let isPending = o.status === 'Pending';
+            container.innerHTML += `
+                <div class="product-card" style="padding:10px; font-size:11px; border-left: 4px solid ${isPending ? '#d97706' : '#059669'};">
+                    <b>Buyer:</b> ${o.buyer}<br>
+                    <b>Item:</b> ${o.title} (UID: ${o.uid})<br>
+                    <b>Paid:</b> ₹${o.price} | <b>UTR:</b> <span style="color:#ff3300; font-weight:bold;">${o.utr}</span><br>
+                    <b>Status:</b> <span style="color:${isPending ? '#fbbf24' : '#34d399'}; font-weight:bold;">${o.status}</span><br>
+                    <div style="margin-top:8px;">
+                        ${isPending ? `<button class="btn btn-warning" onclick="approveOrder(${o.id}, ${o.productId})">✅ Approve & Show Email</button>` : `<div style="background:rgba(5,150,105,0.1); padding:6px; border-radius:4px; color:#34d399; border:1px solid #059669;"><b>Email & Pass:</b> ${o.email}</div>`}
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function approveOrder(orderId, prodId) {
+        if(confirm("Approve this order?")) {
+            let ord = orders.find(x => x.id === orderId);
+            ord.status = 'Approved';
+            localStorage.setItem('ta_orders_v15', JSON.stringify(orders));
+
+            let p = products.find(x => x.id === prodId);
+            if(p) {
+                p.status = 'Sold';
+                localStorage.setItem('ta_store_v15', JSON.stringify(products));
+            }
+
+            alert("Approved successfully!");
+            renderOrders();
+        }
+    }
+
+    renderStore();
+</script>
+
+</body>
+</html>
